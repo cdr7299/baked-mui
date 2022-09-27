@@ -15,8 +15,11 @@ If nvm is installed :
 
 Do `node -v` to verify current node which is applicable
 
-For yarn -> `npm install --global yarn`
--> `yarn` and install packages.
+### Installing yarn
+
+-> `npm install --global yarn`
+
+-> `yarn` (This will install the required node modules)
 
 You can start the dev server using "yarn start" after above step.
 Project has eslint for linting and prettier for formatting.
