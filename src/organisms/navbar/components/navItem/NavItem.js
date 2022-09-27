@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import Typography from 'atoms/Typography';
 import styles from './navItem.module.css';
 
-function NavItem({ title, imgSrc, description, path }) {
+function NavItem({ title, imgSrc, description, path, location }) {
   return (
-    <Link to={path} className={styles.linkStyles}>
+    <Link
+      to={path}
+      className={`${styles.linkStyles} ${path === location ? styles.highlightItem : ''}`}>
       <div className={styles.navItemContainer}>
         <div>
           <img height="100px" src={imgSrc} alt={title} />

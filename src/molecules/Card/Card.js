@@ -7,13 +7,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import IconButton from '@mui/material/IconButton';
 
 import Button from 'atoms/Button';
 import PropertyControlledComponent from 'molecules/propertyControlledComponent';
 
 import styles from './card.module.css';
+import AddToCardButton from 'molecules/AddToCardButton';
+import { useState } from 'react';
 
 function ProductCard({
   title,
@@ -25,17 +25,35 @@ function ProductCard({
   onAddToCart,
   onDeleteFromCart
 }) {
+  const [cardProps, setCardProps] = useState({
+    raised: false,
+    shadow: 1
+  });
+  console.log(cardProps);
   return (
-    <Card variant="outlined" className={`${styles.defaultContainer} ${containerClassName}`}>
-      <CardMedia component="img" height="220" image={imageSrc} />
+    <Card
+      variant="outlined"
+      classes={{ root: cardProps.raised ? styles.cardHovered : '' }}
+      className={`${styles.defaultContainer} ${containerClassName}`}
+      onMouseOut={() => setCardProps({ raised: false, shadow: 1 })}
+      onMouseOver={() => setCardProps({ raised: true, shadow: 3 })}
+      raised={cardProps.raised}
+      zdepth={cardProps.shadow}>
+      <CardMedia component="img" height="200" image={imageSrc} />
       <CardContent className={styles.cardBody}>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" className={styles.cardText}>
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body1"
+          align="center"
+          className={styles.cardText}
+          color="text.secondary">
           {description}
         </Typography>
-        <Typography>{cost}</Typography>
+        <Typography className={styles.cost} variant="h5">
+          {`$ ${cost}`}
+        </Typography>
       </CardContent>
       <div className={styles.cardActions}>
         <PropertyControlledComponent controllerProperty={!countInCart}>
@@ -45,17 +63,13 @@ function ProductCard({
             onClick={onAddToCart}>{`Add to cart`}</Button>
         </PropertyControlledComponent>
         <PropertyControlledComponent controllerProperty={countInCart}>
-          <div className={styles.addedStateButton}>
-            <IconButton onClick={onAddToCart} color="primary">
-              <AddIcon />
-            </IconButton>
-            <Typography variant="body1" color="primary">
-              {countInCart}
-            </Typography>
-            <IconButton onClick={onDeleteFromCart} color="primary">
-              <DeleteIcon />
-            </IconButton>
-          </div>
+          <AddToCardButton
+            onAddToCart={onAddToCart}
+            onDeleteFromCart={onDeleteFromCart}
+            name={title}
+            cost={cost}
+            currentCount={countInCart}
+          />
         </PropertyControlledComponent>
       </div>
     </Card>

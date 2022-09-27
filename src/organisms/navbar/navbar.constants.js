@@ -1,4 +1,6 @@
 import cupcake from 'assets/images/cupcake.png';
+import bake from 'assets/images/bake.png';
+import book from 'assets/images/book.png';
 
 export const NAV_ITEMS = [
   {
@@ -10,13 +12,13 @@ export const NAV_ITEMS = [
   {
     title: 'Cake Class',
     path: '/about',
-    imgSrc: cupcake,
+    imgSrc: bake,
     description: 'Learn to bake fabolous cakes!'
   },
   {
     title: 'Recepie Book',
     path: '/whatever',
-    imgSrc: cupcake,
+    imgSrc: book,
     description: 'Download recepies to save them for later!'
   }
 ];

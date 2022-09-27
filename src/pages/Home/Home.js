@@ -17,6 +17,7 @@ import styles from './home.module.css';
 
 function Home({ switchTheme }) {
   const [isCartVisible, setIsCartVisible] = useState(false);
+
   const toggleDrawer = (open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -32,10 +33,11 @@ function Home({ switchTheme }) {
           justifyContent: 'center',
           alignItems: 'center',
           width: '100%',
-          marginTop: '4rem',
           paddingBottom: '10rem'
         }}>
-        <Typography variant="h4">New Products </Typography>
+        <Typography variant="h4" container="div" className={styles.homeHeading}>
+          New Products
+        </Typography>
         <Products />
         <Paper
           sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, display: 'flex', height: '4rem' }}

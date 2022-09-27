@@ -14,7 +14,12 @@
 }
 
 .linkStyles {
-  width: 34%;
+  width: 33%;
+  flex-grow: 1;
   text-decoration: none !important;
   color: black !important;
+}
+
+.highlightedItems {
+  border-bottom: 1px solid red;
 }

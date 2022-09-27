@@ -16,15 +16,15 @@ function Products() {
     return allData[name]?.currentCount;
   };
 
-  const onAddToCart = useCallback((name, cost) => {
+  const onAddToCart = useCallback((name, cost) => () => {
     dispatch(addToCart({ name, cost }));
     return;
-  }, []);
+  });
 
-  const onDeleteFromCart = useCallback((name, cost) => {
+  const onDeleteFromCart = useCallback((name, cost) => () => {
     dispatch(deleteFromCart({ name, cost }));
     return;
-  }, []);
+  });
 
   return (
     <div className={styles.container}>
@@ -35,8 +35,8 @@ function Products() {
             imageSrc={src}
             description={description}
             cost={cost}
-            onAddToCart={() => onAddToCart(name, cost)}
-            onDeleteFromCart={() => onDeleteFromCart(name, cost)}
+            onAddToCart={onAddToCart(name, cost)}
+            onDeleteFromCart={onDeleteFromCart(name, cost)}
             title={name}
             countInCart={getCurrentProductCount(name)}
           />

@@ -1,42 +1,46 @@
 .defaultContainer {
   margin: 0 1rem;
   border-radius: 0 !important;
-  height: 26rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
-  width: 26rem;
+  width: 30%;
   overflow: visible !important;
+  justify-content: space-between;
+  transition: 'transform 3s ease-in-out';
 }
 
 .cardBody {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  margin-top: 1rem;
-  height: 8rem;
+  justify-content: space-between;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 900 !important;
 }
 
 .cardActions {
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-top: 2.6rem;
-}
-
-.addedStateButton {
-  display: flex;
-  align-items: center;
-  border: 1px solid;
-  border-radius: 4px;
-  border-color: rgba(0, 0, 0, 0.22);
-  background-color: white;
-  justify-content: space-around;
-  width: 10.5rem;
+  padding: 1rem;
 }
 
 .iconButtonText {
-  color: #cc0000;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.cost {
+  margin-top: 0.5rem !important;
+}
+
+.cardText {
+  font-weight: 600;
+}
+
+.root {
+  maxwidth: 310;
+}
+
+.cardHovered {
+  transform: scale3d(1.05, 1.05, 1) !important;
 }

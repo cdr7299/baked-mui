@@ -20,14 +20,19 @@ export const cartSlice = createSlice({
     deleteFromCart: (state, action) => {
       const { name } = action.payload;
       const currentProductCount = _get(state, ['selectedProducts', name, 'currentCount'], 0);
-      if (currentProductCount) {
+      if (currentProductCount > 1) {
         _set(state, ['selectedProducts', name, 'currentCount'], currentProductCount - 1);
+      } else {
+        _set(state, ['selectedProducts', name], {});
       }
+    },
+    clearCart: (state) => {
+      _set(state, ['selectedProducts'], {});
     }
   }
 });
 
-export const { addToCart, deleteFromCart } = cartSlice.actions;
+export const { addToCart, deleteFromCart, clearCart } = cartSlice.actions;
 
 export const selectCartItems = (state) => state.cart.selectedProducts;
 export const selectProductCountByName = (productName) => (state) => {

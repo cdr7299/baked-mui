@@ -9,19 +9,22 @@ import './App.css';
 import Navbar from 'organisms/navbar';
 import Home from 'pages/Home';
 
-import theme from './mui.theme';
+import { lightTheme } from './mui.theme';
 import { ColorModeContext } from './colorMode.context';
 
 function App() {
   const colorMode = React.useContext(ColorModeContext);
-  console.log(colorMode);
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={lightTheme}>
       <CssBaseline />
       <Router>
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Home switchTheme={colorMode.toggleColorMode} />} />
+          <Route
+            exact
+            path="/"
+            element={<Home location={location} switchTheme={colorMode.toggleColorMode} />}
+          />
           <Route path="/about"></Route>
         </Routes>
       </Router>

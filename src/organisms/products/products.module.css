@@ -1,5 +1,10 @@
 .container {
   display: flex;
-  width: 70%;
+  width: 80%;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+.container > * {
+  margin: 10px;
 }
