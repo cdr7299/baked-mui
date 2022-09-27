@@ -1,4 +1,4 @@
-# Getting Started with Create React App and Redux
+# Getting Started with Baked - MUI
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
@@ -7,8 +7,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### required node >= 16.17.0, yarn package manager, nvm (optional)
 
 You can use nvm to switch node versions on the fly
-If nvm is setup,
+If nvm is installed :
+
 -> `nvm install 16.17.0`
+
 -> `nvm use 16`
 
 Do `node -v` to verify current node which is applicable
