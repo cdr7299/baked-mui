@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
+
+import _noop from 'lodash/noop';
 
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
@@ -19,7 +21,7 @@ const style = {
   p: 4
 };
 
-export default function TransitionsModal({ open, handleOpen, handleClose, renderModalBody }) {
+function TransitionsModal({ open, handleClose, renderModalBody }) {
   return (
     <div>
       <Modal
@@ -51,3 +53,19 @@ export default function TransitionsModal({ open, handleOpen, handleClose, render
     </div>
   );
 }
+
+TransitionsModal.propTypes = {
+  open: PropTypes.bool,
+  handleOpen: PropTypes.func,
+  handleClose: PropTypes.func,
+  renderModalBody: PropTypes.node
+};
+
+TransitionsModal.defaultProps = {
+  open: false,
+  handleOpen: _noop,
+  handleClose: _noop,
+  renderModalBody: null
+};
+
+export default TransitionsModal;

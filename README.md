@@ -4,9 +4,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # How to run
 
-required node >= 16.17.0
-after installing node, do run "yarn" and install packages
+### required node >= 16.17.0, yarn package manager, nvm (optional)
+
+You can use nvm to switch node versions on the fly
+If nvm is setup,
+-> `nvm install 16.17.0`
+-> `nvm use 16`
+
+Do `node -v` to verify current node which is applicable
+
+For yarn -> `npm install --global yarn`
+-> `yarn` and install packages.
+
 You can start the dev server using "yarn start" after above step.
+Project has eslint for linting and prettier for formatting.
 
 ## Available Scripts
 

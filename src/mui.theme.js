@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { red, grey, blue, brown } from '@mui/material/colors';
+import { grey, brown } from '@mui/material/colors';
 
 const getDesignTokens = (mode) => ({
   typography: {
