@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import _noop from 'lodash/noop';
@@ -10,10 +11,9 @@ import AddIcon from '@mui/icons-material/Add';
 
 import Button from 'atoms/Button';
 import PropertyControlledComponent from 'molecules/propertyControlledComponent';
-
-import styles from './card.module.css';
 import AddToCardButton from 'molecules/AddToCardButton';
-import { useState } from 'react';
+
+import styles from './productCard.module.css';
 
 function ProductCard({
   title,
@@ -29,7 +29,6 @@ function ProductCard({
     raised: false,
     shadow: 1
   });
-  console.log(cardProps);
   return (
     <Card
       variant="outlined"

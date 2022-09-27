@@ -9,4 +9,5 @@
 .homeHeading {
   font-family: Pacifico;
   padding: 2rem;
+  text-transform: capitalize;
 }

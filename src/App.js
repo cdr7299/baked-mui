@@ -9,26 +9,19 @@ import './App.css';
 import Navbar from 'organisms/navbar';
 import Home from 'pages/Home';
 
-import { lightTheme } from './mui.theme';
 import { ColorModeContext } from './colorMode.context';
+import getDesignTokens from './mui.theme';
 
 function App() {
   const colorMode = React.useContext(ColorModeContext);
   return (
-    <ThemeProvider theme={lightTheme}>
-      <CssBaseline />
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={<Home location={location} switchTheme={colorMode.toggleColorMode} />}
-          />
-          <Route path="/about"></Route>
-        </Routes>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home switchTheme={colorMode.toggleColorMode} />} />
+        <Route path="/about"></Route>
+      </Routes>
+    </Router>
   );
 }
 
@@ -43,18 +36,11 @@ export default function ToggleColorMode() {
     []
   );
 
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode
-        }
-      }),
-    [mode]
-  );
+  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
+      <CssBaseline />
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>

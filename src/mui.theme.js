@@ -1,30 +1,50 @@
-import { createTheme } from '@mui/material/styles';
-import './fonts/Pacifico-Regular.ttf';
+/* eslint-disable prettier/prettier */
+import { red, grey, blue, brown } from '@mui/material/colors';
 
-const lightTheme = createTheme({
+const getDesignTokens = (mode) => ({
   typography: {
-    fontFamily: `"Roboto", "Helvetica", "Arial", "Pacifico" sans-serif`
+    fontFamily: `"Roboto", "Helvetica", "Arial", "Pacifico" sans-serif`,
+    h4: {
+      '@media (max-width:1024px)': {
+        fontSize: '1.4rem',
+      },
+    }
   },
   palette: {
-    mode: 'light',
+    mode,
     primary: {
-      main: '#cc0000;'
+      main: '#cc0000',
+      ...(mode === 'dark' && {
+        main: brown[700],
+      }),
     },
     secondary: {
-      light: '#0066ff',
-      main: '#0044ff',
-      contrastText: '#ffcc00'
+      ...brown,
+      ...(mode === 'dark' && {
+        main: brown[200],
+      }),
     },
+    ...(mode === 'dark' && {
+      background: {
+        default: grey[700],
+        paper: grey[600],
+      },
+    }),
+    text: {
+      ...(mode === 'light'
+        ? {
+          primary: grey[800],
+          secondary: grey[700],
+        }
+        : {
+          primary: brown[100],
+          secondary: brown[700],
+        }),
+    },
+    tonalOffset: 0.2,
+    contrastThreshold: 2
+  },
 
-    custom: {
-      light: '#ffa726',
-      main: '#f57c00',
-      dark: '#ef6c00',
-      contrastText: 'rgba(0, 0, 0, 0.87)'
-    },
-    contrastThreshold: 3,
-    tonalOffset: 0.2
-  }
 });
 
-export { lightTheme };
+export default getDesignTokens;

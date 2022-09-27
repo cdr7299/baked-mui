@@ -37,10 +37,6 @@
   font-weight: 600;
 }
 
-.root {
-  maxwidth: 310;
-}
-
 .cardHovered {
   transform: scale3d(1.05, 1.05, 1) !important;
 }

@@ -3,7 +3,7 @@ import _map from 'lodash/map';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Card from 'molecules/Card';
+import Card from 'molecules/ProductCard';
 import { CAKES } from 'mockData/cakes';
 import { addToCart, selectCartItems, deleteFromCart } from '../cart/cartSlice';
 

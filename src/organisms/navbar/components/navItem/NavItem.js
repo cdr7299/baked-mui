@@ -1,15 +1,25 @@
+import { useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Typography from 'atoms/Typography';
 import styles from './navItem.module.css';
 
-function NavItem({ title, imgSrc, description, path, location }) {
+function NavItem({ title, imgSrc, description, path }) {
+  const theme = useTheme();
+
   return (
     <Link
+      style={{
+        color: theme.palette.secondary.main
+      }}
       to={path}
-      className={`${styles.linkStyles} ${path === location ? styles.highlightItem : ''}`}>
-      <div className={styles.navItemContainer}>
+      className={styles.linkStyles}>
+      <div
+        style={{
+          backgroundColor: theme.palette.background.default
+        }}
+        className={styles.navItemContainer}>
         <div>
           <img height="100px" src={imgSrc} alt={title} />
         </div>

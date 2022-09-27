@@ -3,7 +3,7 @@
   align-items: center;
   height: 100%;
   padding: 1.6rem;
-  background-color: white;
+  /* background-color: white; */
   /* margin-top: 3rem; */
   box-shadow: 4px 12px 15px -10px rgba(0, 0, 0, 0.3);
 }
@@ -17,9 +17,5 @@
   width: 33%;
   flex-grow: 1;
   text-decoration: none !important;
-  color: black !important;
-}
-
-.highlightedItems {
-  border-bottom: 1px solid red;
+  /* color: black !important; */
 }
