@@ -31,7 +31,6 @@ function Home({ switchTheme }) {
     setIsCartVisible(!open);
   };
   return (
-    // <Grid container>
     <div
       style={{
         display: 'flex',
@@ -82,7 +81,6 @@ function Home({ switchTheme }) {
       </Paper>
       <Cart open={isCartVisible} toggleDrawer={toggleDrawer} />
     </div>
-    // </Grid>
   );
 }
 

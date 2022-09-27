@@ -3,6 +3,8 @@ import _map from 'lodash/map';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Grid from '@mui/material/Unstable_Grid2';
+
 import Card from 'molecules/ProductCard';
 import { CAKES } from 'mockData/cakes';
 import { addToCart, selectCartItems, deleteFromCart } from '../cart/cartSlice';
@@ -27,22 +29,29 @@ function Products() {
   });
 
   return (
-    <div className={styles.container}>
+    <Grid
+      className={styles.container}
+      container
+      columnSpacing={3}
+      rowSpacing={4}
+      disableEqualOverflow>
       {_map(CAKES, ({ name, src, description, cost }, index) => {
         return (
-          <Card
-            key={`${name}${index}`}
-            imageSrc={src}
-            description={description}
-            cost={cost}
-            onAddToCart={onAddToCart(name, cost)}
-            onDeleteFromCart={onDeleteFromCart(name, cost)}
-            title={name}
-            countInCart={getCurrentProductCount(name)}
-          />
+          <Grid xs={12} sm={6} md={6} lg={4}>
+            <Card
+              key={`${name}${index}`}
+              imageSrc={src}
+              description={description}
+              cost={cost}
+              onAddToCart={onAddToCart(name, cost)}
+              onDeleteFromCart={onDeleteFromCart(name, cost)}
+              title={name}
+              countInCart={getCurrentProductCount(name)}
+            />
+          </Grid>
         );
       })}
-    </div>
+    </Grid>
   );
 }
 

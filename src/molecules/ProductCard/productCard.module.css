@@ -4,7 +4,6 @@
   height: 30rem;
   display: flex;
   flex-direction: column;
-  width: 30%;
   overflow: visible !important;
   justify-content: space-between;
   transition: 'transform 0.5s ease-in-out';

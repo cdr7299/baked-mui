@@ -9,17 +9,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 You can use nvm to switch node versions on the fly
 If nvm is installed :
 
--> `nvm install 16.17.0`
+`nvm install 16.17.0`
 
--> `nvm use 16`
+`nvm use 16`
 
 Do `node -v` to verify current node which is applicable
 
 ### Installing yarn
 
--> `npm install --global yarn`
+`npm install --global yarn`
 
--> `yarn` (This will install the required node modules)
+`yarn` (This will install the required node modules)
 
 You can start the dev server using "yarn start" after above step.
 Project has eslint for linting and prettier for formatting.

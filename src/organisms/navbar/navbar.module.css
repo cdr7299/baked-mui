@@ -1,8 +1,0 @@
-.navContainer {
-  display: flex;
-  background-color: #dbbb92d5;
-  padding: 4rem 6rem;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
-}
