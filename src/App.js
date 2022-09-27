@@ -11,6 +11,8 @@ import Home from 'pages/Home';
 
 import { ColorModeContext } from './colorMode.context';
 import getDesignTokens from './mui.theme';
+import Recipies from 'pages/Recipies';
+import CakeClass from 'pages/CakeClass';
 
 function App() {
   const colorMode = React.useContext(ColorModeContext);
@@ -19,6 +21,16 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home switchTheme={colorMode.toggleColorMode} />} />
+        <Route
+          exact
+          path="/recipies"
+          element={<Recipies switchTheme={colorMode.toggleColorMode} />}
+        />
+        <Route
+          exact
+          path="/class"
+          element={<CakeClass switchTheme={colorMode.toggleColorMode} />}
+        />
         <Route path="/about"></Route>
       </Routes>
     </Router>

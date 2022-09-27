@@ -31,11 +31,10 @@ function ProductCard({
   });
   return (
     <Card
-      variant="outlined"
       classes={{ root: cardProps.raised ? styles.cardHovered : '' }}
       className={`${styles.defaultContainer} ${containerClassName}`}
       onMouseOut={() => setCardProps({ raised: false, shadow: 1 })}
-      onMouseOver={() => setCardProps({ raised: true, shadow: 3 })}
+      onMouseOver={() => setCardProps({ raised: true, shadow: 2 })}
       raised={cardProps.raised}
       zdepth={cardProps.shadow}>
       <CardMedia component="img" height="200" image={imageSrc} />
@@ -83,7 +82,7 @@ ProductCard.propTypes = {
   imageSrc: PropTypes.string,
   containerClassName: PropTypes.string,
   countInCart: PropTypes.number,
-  cost: PropTypes.string,
+  cost: PropTypes.number,
   onAddToCart: PropTypes.func,
   onDeleteFromCart: PropTypes.func
 };

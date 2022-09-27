@@ -11,13 +11,13 @@ export const NAV_ITEMS = [
   },
   {
     title: 'Cake Class',
-    path: '/about',
+    path: '/class',
     imgSrc: bake,
     description: 'Learn to bake fabolous cakes!'
   },
   {
     title: 'Recepie Book',
-    path: '/whatever',
+    path: '/recipies',
     imgSrc: book,
     description: 'Download recepies to save them for later!'
   }

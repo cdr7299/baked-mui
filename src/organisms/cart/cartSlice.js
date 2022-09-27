@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const { name, cost } = action.payload;
-      _set(state, ['selectedProducts', name, 'cost'], cost);
+      _set(state, ['selectedProducts', name, 'cost'], cost); // todo use constants
       _set(state, ['selectedProducts', name, 'name'], name);
       const currentProductCount = _get(state, ['selectedProducts', name, 'currentCount'], 0);
       _set(state, ['selectedProducts', name, 'currentCount'], currentProductCount + 1);
