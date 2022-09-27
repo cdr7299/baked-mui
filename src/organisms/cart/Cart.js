@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 
 import Typography from 'atoms/Typography';
+import Modal from 'atoms/Modal';
 import PropertyControlledComponent from 'molecules/propertyControlledComponent';
 import AddToCardButton from 'molecules/AddToCardButton';
 
@@ -27,6 +28,8 @@ export default function Cart({ open, toggleDrawer }) {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   const getCurrentProductCount = (name) => {
     return cartItems[name]?.currentCount;
   };
@@ -41,10 +44,18 @@ export default function Cart({ open, toggleDrawer }) {
     return;
   });
 
-  const onDiscardAllItemsFromCart = useCallback(() => () => {
-    dispatch(clearCart({ name: 'all' }));
-    return;
-  });
+  const onDiscardAllItemsFromCart = useCallback(
+    () => () => {
+      dispatch(clearCart());
+      setModalVisible(false);
+      return;
+    },
+    [modalVisible]
+  );
+
+  const checkoutCurrentCart = useCallback(() => {
+    console.log('Current Payload', cartItems);
+  }, [cartItems]);
 
   const getCartItems = useCallback(() => {
     const cartItemsArray = _values(cartItems);
@@ -86,7 +97,30 @@ export default function Cart({ open, toggleDrawer }) {
         ))}
       </div>
     );
-  });
+  }, [cartItems, onAddToCart, onDeleteFromCart, getCurrentProductCount]);
+
+  const renderModalBody = () => {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '1rem',
+          height: '8rem',
+          justifyContent: 'space-between'
+        }}>
+        <Typography variant="body1">Are you sure you want to clear all items from cart?</Typography>
+        <div style={{ display: 'flex', justifyContent: 'space-around', width: '50%' }}>
+          <Button variant="contained" onClick={onDiscardAllItemsFromCart()}>
+            Yes
+          </Button>
+          <Button variant="outlined" onClick={() => setModalVisible(false)}>
+            No
+          </Button>
+        </div>
+      </div>
+    );
+  };
 
   const getCartActions = useCallback(() => {
     return (
@@ -104,18 +138,21 @@ export default function Cart({ open, toggleDrawer }) {
           </Typography>
         </div>
         <div className={styles.cartActions}>
-          <Button variant="contained">
+          <Button variant="contained" onClick={checkoutCurrentCart}>
             <Typography variant="button">Checkout</Typography>
           </Button>
-          <Button variant="contained">
-            <Typography variant="button" onClick={onDiscardAllItemsFromCart()}>
-              Clear Cart
-            </Typography>
+          <Button variant="contained" onClick={() => setModalVisible(true)}>
+            <Typography variant="button">Clear Cart</Typography>
           </Button>
         </div>
+        <Modal
+          open={modalVisible}
+          onClose={() => setModalVisible(!modalVisible)}
+          renderModalBody={renderModalBody()}
+        />
       </>
     );
-  }, [cartItems]);
+  }, [cartItems, modalVisible]);
 
   return (
     <SwipeableDrawer

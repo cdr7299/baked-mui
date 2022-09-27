@@ -13,7 +13,6 @@ export const checkIfCartIsEmpty = (cartItems) => {
 };
 
 export const getCostOfItem = (currentCount, cost) => {
-  console.log(currentCount, cost);
   return `$ ${Number(currentCount * cost).toFixed(2)}`;
 };
 
