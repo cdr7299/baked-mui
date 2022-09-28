@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { forwardRef, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -11,6 +11,9 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 import Typography from 'atoms/Typography';
 import Modal from 'atoms/Modal';
@@ -37,11 +40,26 @@ const StyledBox = styled(Box)(({ theme }) => ({
   }
 }));
 
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export default function Cart({ open, toggleDrawer }) {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [openAlert, setOpenAlert] = useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'right'
+  });
+  const handleCloseAlert = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenAlert({ ...openAlert, open: false });
+  };
 
   const getCurrentProductCount = (name) => {
     return cartItems[name]?.currentCount;
@@ -68,6 +86,8 @@ export default function Cart({ open, toggleDrawer }) {
 
   const checkoutCurrentCart = useCallback(() => {
     console.log('Current Payload', cartItems);
+    console.log('Current Total Cost', getTotalCartValue(cartItems));
+    setOpenAlert({ ...openAlert, open: true });
   }, [cartItems]);
 
   const getCartItems = useCallback(() => {
@@ -168,6 +188,22 @@ export default function Cart({ open, toggleDrawer }) {
           {getCartActions()}
         </PropertyControlledComponent>
       </div>
+      <Snackbar
+        anchorOrigin={{
+          vertical: openAlert.vertical,
+          horizontal: openAlert.horizontal
+        }}
+        open={openAlert.open}
+        autoHideDuration={3000}
+        onClose={handleCloseAlert}>
+        <Alert
+          onClose={handleCloseAlert}
+          color="secondary"
+          severity="success"
+          sx={{ width: '100%' }}>
+          Please Check Console!
+        </Alert>
+      </Snackbar>
     </SwipeableDrawer>
   );
 }
