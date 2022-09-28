@@ -10,6 +10,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 
 import Typography from 'atoms/Typography';
 import Modal from 'atoms/Modal';
@@ -123,18 +124,21 @@ export default function Cart({ open, toggleDrawer }) {
   const getCartActions = useCallback(() => {
     return (
       <>
-        <div className={styles.cartSummary}>
-          <Typography variant="subtitle1" className={styles.cartSummaryItem}>
-            Price to pay at checkout
-          </Typography>
-          <Typography align="right" variant="subtitle1" className={styles.cartSummaryItem}>
-            {getTotalCartItems(cartItems)}
-          </Typography>
-
-          <Typography variant="subtitle1" align="right" className={styles.cartSummaryItem}>
-            {getTotalCartValue(cartItems)}
-          </Typography>
-        </div>
+        <Grid container className={styles.cartSummary}>
+          <Grid xs={4} sm={6} md={8}>
+            <Typography variant="subtitle1">Price to pay at checkout</Typography>
+          </Grid>
+          <Grid xs={4} sm={4} md={2}>
+            <Typography align="center" variant="subtitle1">
+              {getTotalCartItems(cartItems)}
+            </Typography>
+          </Grid>
+          <Grid xs={4} sm={2} md={2}>
+            <Typography variant="subtitle1" align="right">
+              {getTotalCartValue(cartItems)}
+            </Typography>
+          </Grid>
+        </Grid>
         <StyledBox>
           <Button variant="contained" onClick={checkoutCurrentCart}>
             <Typography variant="button">Checkout</Typography>

@@ -45,14 +45,6 @@
 }
 
 .cartSummary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   padding: 1rem;
-  justify-content: space-between;
-}
-
-.cartSummaryItem {
-  width: 33%;
 }

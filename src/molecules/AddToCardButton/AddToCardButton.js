@@ -9,9 +9,9 @@ import Typography from 'atoms/Typography';
 
 import styles from './addToCart.module.css';
 
-function AddToCardButton({ name, onAddToCart, onDeleteFromCart, currentCount }) {
+function AddToCardButton({ className, name, onAddToCart, onDeleteFromCart, currentCount }) {
   return (
-    <div className={styles.addedStateButton}>
+    <div className={`${styles.addedStateButton} ${className}`}>
       <IconButton onClick={() => onAddToCart(name)} color="primary">
         <AddIcon />
       </IconButton>
@@ -32,7 +32,8 @@ AddToCardButton.propTypes = {
   name: PropTypes.string,
   onAddToCart: PropTypes.func.isRequired,
   onDeleteFromCart: PropTypes.func.isRequired,
-  currentCount: PropTypes.number.isRequired
+  currentCount: PropTypes.number.isRequired,
+  className: PropTypes.string
 };
 
 export default AddToCardButton;
