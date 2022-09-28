@@ -2,6 +2,7 @@
   "name": "baked-mui",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://cdr7299.github.io/baked-mui",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -12,6 +13,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",
     "@testing-library/user-event": "^14.1.1",
+    "gh-pages": "^4.0.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -22,6 +24,8 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
