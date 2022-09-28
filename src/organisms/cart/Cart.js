@@ -8,21 +8,33 @@ import _noop from 'lodash/noop';
 
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
+import { styled } from '@mui/material/styles';
+import { Box } from '@mui/material';
 
 import Typography from 'atoms/Typography';
 import Modal from 'atoms/Modal';
 import PropertyControlledComponent from 'molecules/propertyControlledComponent';
-import AddToCardButton from 'molecules/AddToCardButton';
 
 import { addToCart, selectCartItems, deleteFromCart, clearCart } from './cartSlice';
 import styles from './cart.module.css';
-import {
-  checkIfCartIsEmpty,
-  getCostOfItem,
-  getTotalCartItems,
-  getTotalCartValue
-} from './cart.utils';
+import { checkIfCartIsEmpty, getTotalCartItems, getTotalCartValue } from './cart.utils';
+import CartItem from './components/CartItem';
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: ' center',
+  padding: '1.6rem',
+  [theme.breakpoints.down('sm')]: {
+    width: '100%'
+  },
+  [theme.breakpoints.up('sm')]: {
+    width: '50%'
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '30%'
+  }
+}));
 
 export default function Cart({ open, toggleDrawer }) {
   const dispatch = useDispatch();
@@ -71,29 +83,15 @@ export default function Cart({ open, toggleDrawer }) {
     return (
       <div className={styles.cartListContainer}>
         {_map(cartItemsArray, ({ name, currentCount, cost }) => (
-          <PropertyControlledComponent key={name} controllerProperty={currentCount}>
-            <div className={styles.cartListItemContainer}>
-              <Typography variant="subtitle1" className={styles.cartItemName} primary={name}>
-                {name}
-              </Typography>
-              <AddToCardButton
-                onAddToCart={onAddToCart(name, cost)}
-                onDeleteFromCart={onDeleteFromCart(name, cost)}
-                countInCart={getCurrentProductCount(name)}
-                name={name}
-                cost={cost}
-                currentCount={currentCount}
-              />
-              <Typography
-                variant="subtitle1"
-                align="right"
-                className={styles.cartItemCost}
-                primary={name}>
-                {getCostOfItem(currentCount, cost)}
-              </Typography>
-            </div>
-            <Divider />
-          </PropertyControlledComponent>
+          <CartItem
+            key={name}
+            name={name}
+            currentCount={currentCount}
+            cost={cost}
+            onAddToCart={onAddToCart}
+            onDeleteFromCart={onDeleteFromCart}
+            getCurrentProductCount={getCurrentProductCount}
+          />
         ))}
       </div>
     );
@@ -125,26 +123,26 @@ export default function Cart({ open, toggleDrawer }) {
   const getCartActions = useCallback(() => {
     return (
       <>
-        <div className={styles.cartListItemContainer}>
-          <Typography variant="subtitle1" className={styles.cartItemName}>
+        <div className={styles.cartSummary}>
+          <Typography variant="subtitle1" className={styles.cartSummaryItem}>
             Price to pay at checkout
           </Typography>
-          <Typography align="right" variant="subtitle1" className={styles.cartItemName}>
+          <Typography align="right" variant="subtitle1" className={styles.cartSummaryItem}>
             {getTotalCartItems(cartItems)}
           </Typography>
 
-          <Typography variant="subtitle1" align="right" className={styles.cartItemCost}>
+          <Typography variant="subtitle1" align="right" className={styles.cartSummaryItem}>
             {getTotalCartValue(cartItems)}
           </Typography>
         </div>
-        <div className={styles.cartActions}>
+        <StyledBox>
           <Button variant="contained" onClick={checkoutCurrentCart}>
             <Typography variant="button">Checkout</Typography>
           </Button>
           <Button variant="contained" onClick={() => setModalVisible(true)}>
             <Typography variant="button">Clear Cart</Typography>
           </Button>
-        </div>
+        </StyledBox>
         <Modal
           open={modalVisible}
           onClose={() => setModalVisible(!modalVisible)}

@@ -8,14 +8,6 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.cartListItemContainer {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .addedStateButton {
   display: flex;
   align-items: center;
@@ -52,10 +44,15 @@
   padding: 0.6rem;
 }
 
-.cartItemName {
-  width: 70%;
+.cartSummary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  justify-content: space-between;
 }
 
-.cartItemCost {
-  width: 10%;
+.cartSummaryItem {
+  width: 33%;
 }

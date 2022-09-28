@@ -37,9 +37,8 @@ function Products() {
       disableEqualOverflow>
       {_map(CAKES, ({ name, src, description, cost }, index) => {
         return (
-          <Grid xs={12} sm={6} md={6} lg={4}>
+          <Grid key={`${name}${index}`} xs={12} sm={6} md={6} lg={4}>
             <Card
-              key={`${name}${index}`}
               imageSrc={src}
               description={description}
               cost={cost}

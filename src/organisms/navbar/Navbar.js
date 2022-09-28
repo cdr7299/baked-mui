@@ -23,14 +23,8 @@ function Navbar() {
     <StyledGridContainer container spacing={0} rowSpacing={1} disableEqualOverflow>
       {_map(NAV_ITEMS, ({ title, imgSrc, description, path }) => {
         return (
-          <Grid xs={12} md={4} lg={4}>
-            <NavItem
-              key={title}
-              title={title}
-              imgSrc={imgSrc}
-              description={description}
-              path={path}
-            />
+          <Grid key={title} xs={12} md={4} lg={4}>
+            <NavItem title={title} imgSrc={imgSrc} description={description} path={path} />
           </Grid>
         );
       })}
