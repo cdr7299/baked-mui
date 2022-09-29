@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/baked-mui/static/css/main.28d0c859.css",
-    "main.js": "/baked-mui/static/js/main.ce8d11e5.js",
+    "main.css": "/baked-mui/static/css/main.a3cf462a.css",
+    "main.js": "/baked-mui/static/js/main.d6ba2ac6.js",
     "static/js/787.6f04bfed.chunk.js": "/baked-mui/static/js/787.6f04bfed.chunk.js",
     "static/media/Pacifico-Regular.ttf": "/baked-mui/static/media/Pacifico-Regular.c0d735fc04154e03a691.ttf",
     "static/media/eclairs.jpg": "/baked-mui/static/media/eclairs.46f769872b205e6b6f1d.jpg",
@@ -11,12 +11,12 @@
     "static/media/deathByChoc.jpeg": "/baked-mui/static/media/deathByChoc.d31bfe93ca581e4c939c.jpeg",
     "static/media/cupcake.png": "/baked-mui/static/media/cupcake.4e5639a2b6421c07d99f.png",
     "index.html": "/baked-mui/index.html",
-    "main.28d0c859.css.map": "/baked-mui/static/css/main.28d0c859.css.map",
-    "main.ce8d11e5.js.map": "/baked-mui/static/js/main.ce8d11e5.js.map",
+    "main.a3cf462a.css.map": "/baked-mui/static/css/main.a3cf462a.css.map",
+    "main.d6ba2ac6.js.map": "/baked-mui/static/js/main.d6ba2ac6.js.map",
     "787.6f04bfed.chunk.js.map": "/baked-mui/static/js/787.6f04bfed.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.28d0c859.css",
-    "static/js/main.ce8d11e5.js"
+    "static/css/main.a3cf462a.css",
+    "static/js/main.d6ba2ac6.js"
   ]
 }
